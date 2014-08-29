@@ -33,6 +33,8 @@ int rk3288_memtrack_get_memory(const struct memtrack_module *module,
 {
     if (type == MEMTRACK_TYPE_GL) {
         return mali_memtrack_get_memory(pid, type, records, num_records);
+    } else if (type == MEMTRACK_TYPE_OTHER) {
+	    return ion_memtrack_get_memory(pid, type, records, num_records);
     }
 
     return -EINVAL;

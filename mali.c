@@ -25,10 +25,7 @@
 
 #include "memtrack_rk3288.h"
 
-#define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
-#define min(x, y) ((x) < (y) ? (x) : (y))
-
-struct memtrack_record record_templates[] = {
+static struct memtrack_record record_templates[] = {
     {
         .flags = MEMTRACK_FLAG_SMAPS_ACCOUNTED |
                  MEMTRACK_FLAG_PRIVATE |

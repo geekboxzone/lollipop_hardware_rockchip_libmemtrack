@@ -21,6 +21,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_C_INCLUDES += hardware/libhardware/include
 LOCAL_SHARED_LIBRARIES := libcutils
-LOCAL_SRC_FILES := memtrack_rk3288.c mali.c
+LOCAL_SRC_FILES := memtrack_rk3288.c mali.c ion.c
 LOCAL_MODULE := memtrack.$(TARGET_BOARD_HARDWARE)
 include $(BUILD_SHARED_LIBRARY)
