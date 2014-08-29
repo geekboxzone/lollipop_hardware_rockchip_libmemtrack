@@ -52,7 +52,8 @@ int mali_memtrack_get_memory(pid_t pid, int type,
 
     *num_records = ARRAY_SIZE(record_templates);
 
-    ALOGV("mali_memtrack_get_memory : %d\n", *num_records);
+    ALOGV("mali_memtrack_get_memory : pid(%d), type(%d), num_records(%d), allocated_records(%d)\n",
+          pid, type, *num_records, allocated_records);
 
     /* fastpath to return the necessary number of records */
     if (allocated_records == 0) {
@@ -73,7 +74,7 @@ int mali_memtrack_get_memory(pid_t pid, int type,
         }
 
         /* Format:
-         * Name                 pid  cap(pages) usage(pages) unmapped(pages)
+         * Name                 pid  cache(pages) usage(pages) unmapped(pages)
          * =================================================================
          * mali0                        524288      85163
          *   kctx-0xf393b000    1447     7022       8489       8488
