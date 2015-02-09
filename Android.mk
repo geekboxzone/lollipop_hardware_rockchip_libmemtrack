@@ -18,7 +18,14 @@ LOCAL_PATH := $(call my-dir)
 # hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
 include $(CLEAR_VARS)
 
+ifneq (1,$(strip $(shell expr $(PLATFORM_VERSION) \>= 5.0)))
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+else
+ifneq ($(strip $(TARGET_2ND_ARCH)), )
+LOCAL_MULTILIB := both
+endif
+LOCAL_MODULE_RELATIVE_PATH := hw
+endif
 LOCAL_C_INCLUDES += hardware/libhardware/include
 LOCAL_SHARED_LIBRARIES := libcutils
 LOCAL_SRC_FILES := memtrack_rk3288.c mali.c ion.c
